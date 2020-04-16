@@ -348,14 +348,6 @@ template {
   display: none;
 }
 /*===================Début du code==================================*/
-h1{
-    text-align: center;
-    font-size: 4.5rem;
-}
-h2{
-    text-align: center;
-    font-size: 2rem;
-}
 img{
     width: 70%;
     height: 60%;
@@ -363,6 +355,19 @@ img{
     margin-left: auto;
     margin-right: auto;
 }
-article{
- padding-bottom: 2rem;
+h1{
+    font-size: 2rem;
+    text-align: center;
+}
+/*============================600px=================================*/
+@media (min-width: 600px){
+    h1{
+        font-size: 4rem;
+    }
+}
+/*==============================800px===============================*/
+@media (min-width: 800px){
+    h1{
+        font-size: 6rem;
+    }
 }
