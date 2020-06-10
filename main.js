@@ -1,1 +1,0 @@
-fichierProduit.ficheProduit();
