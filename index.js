@@ -9,16 +9,16 @@ fetch("http://localhost:3000/api/teddies").then(response =>{
         let imageElt = document.createElement("img");
         imageElt.src = elements.imageUrl;
         let idElt = document.createElement("p");
-        
         idElt.textContent = elements._id;
         
-        articlesElt.appendChild(article);
+         let lien = document.createElement('a');
+        lien.setAttribute('href', "produit.html?" + "id=" + `${elements._id}`)  ;
         article.appendChild(titreElt);
-        article.appendChild(imageElt);
+        article.appendChild(lien);
+        articlesElt.appendChild(article);
+        lien.appendChild(imageElt);
         article.appendChild(idElt);
-        let lien = document.createElement('a');
-        lien.setAttribute('href', "produit.html");
-        imageElt.appendChild(lien);
+       
     
     });
     
