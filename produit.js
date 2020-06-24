@@ -1,39 +1,55 @@
 
-//https://www.bonbache.fr/recuperer-les-parametres-d-url-d-une-page-web-en-javascript-258.html
-let url = window.location.search
-let params = new URLSearchParams(url);
+
+const url = window.location.search;
+const params = new URLSearchParams(url);
 
 
 
 //document.getElementById("produit").textContent = params.get('id');
 
-fetch("http://localhost:3000/api/teddies").then(responce =>{
-    return responce.json();
+fetch("http://localhost:3000/api/teddies/" + params.get('id')).then(response =>{
+    return response.json();
 }).then(elements =>{
-   let position = window.location.href.indexOf('?');
-//alert(position)
-   // elements.forEach ( elements =>{
-        if (position!=-1){
-    var id_num='elements.name'; 
-    var text_id='';
-var fin_url = window.location.href.substr(position + 1);
-    fin_url = fin_url.replace(/=/g," ");
-    id_num = fin_url.substr(0,2);
-    text_id = fin_url.substr(3);
-    //alert(fin_url);
-   let section = document.getElementById("produit");
-  let essaie = document.getElementById('info').innerHTML = "<img src = elements.imageUrl + id_num + atl ='+text_id+'/>";
-    
-    //let article = document.createElement("article");
-   // let nom = document.createElement("h2");
-  //  nom.textContent = elements.name;
-  //  let lienImage =  document.createElement('img');
-   // lienImage.src = elements.imageUrl;
-    
-  //  section.appendChild(article);
-  //  article.appendChild(nom);
-  //  article.appendChild(lienImage);
-}
-    ///})
+       //penser à faire document.getElementById
+      let section = document.getElementById('produit');
+      let article = document.createElement('article');
+       let nom = document.createElement('h2');
+       nom.textContent = elements.name;
+       let image = document.createElement('img');
+       image.src = elements.imageUrl;
+       let prix = document.createElement('p');
+       prix.textContent = elements.price + " €";
+       let descr = document.createElement('p');
+       descr.textContent = elements.description;
+       let select = document.getElementById("selectNumber");
+      let options = elements.colors;
+      for (let i = 0; i < options.length; i++){
+          let opt = options[i];
+          let el = document.createElement('option');
+          el.textContent = opt;
+          el.value = opt;
+          select.appendChild(el);
+      };
 
-})
+   let bouton = document.createElement('input');
+    bouton.setAttribute('type', "button");
+    bouton.setAttribute('value', 'ajouter au panier');    
+    let lien = document.createElement('a');
+    lien.setAttribute("herf", "panier.html");
+
+    
+
+
+
+
+    section.appendChild(article);
+    article.appendChild(nom);
+    article.appendChild(image);
+    article.appendChild(prix);
+    article.appendChild(descr);
+    article.appendChild(lien);
+    lien.appendChild(bouton);
+    });
+
+    
+
