@@ -1,0 +1,29 @@
+@media (min-width: 300px){
+    body{
+        background-color: #F3E9F1;
+    }
+    p{
+    font-size: 1em;
+}
+    h2{
+    text-align: center;
+    font-size: 1.5em;
+}
+
+@media (min-width: 600px){
+    h2{
+        font-size: 2.4em;
+    }
+    p{
+        font-size: 1.2em;
+    }
+}
+
+@media (min-width: 1000px){
+    h2{
+        font-size: 4em;
+    }
+    #logo{
+        width: auto;
+    }
+}

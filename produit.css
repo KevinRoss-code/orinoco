@@ -1,0 +1,38 @@
+@media (min-width: 300px){
+    body{
+        background-color: #F3E9F1;
+    }
+    p{
+    font-size: 1em;
+}
+    h2{
+    text-align: center;
+    font-size: 1.5em;
+}
+    
+    img{
+    display: flex;
+    flex-direction: column;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 10%;
+    width: 60%;
+}
+
+@media (min-width: 600px){
+    h2{
+        font-size: 2.4em;
+    }
+    p{
+        font-size: 1.2em;
+    }
+}
+
+@media (min-width: 1000px){
+    h2{
+        font-size: 5em;
+    }
+    #logo{
+        width: auto;
+    }
+}
