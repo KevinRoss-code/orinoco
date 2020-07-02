@@ -48,17 +48,14 @@ fetch("http://localhost:3000/api/teddies/" + params.get('id')).then(response =>{
     article.appendChild(descr);
     article.appendChild(lien);
     lien.appendChild(bouton);
-   
 
-   /* function sauvegardeInfo(){
-        let sauv = JSON.stringify(bouton);
-        localStorage.setItem('options', sauv);
-        console.log('added')
-    }*/
-    
-    
+      let sauv = document.getElementById('sauv');
+      let sauvJson = JSON.stringify(elements.colors);
+      localStorage.setItem("couleur", sauvJson);
+  
     });
     
+   
         
     
 

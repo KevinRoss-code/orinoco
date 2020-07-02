@@ -8,7 +8,8 @@
 <body>
    <section id="produit">
     <form id="muForm">
-        <select id="selectNumber">
+        <input name="texte" type='text' id="sauv"/>
+        <select id="selectNumber" onclick="this.form.texte.value=this.options[this.selectedIndex].text;">
             <option>Choisir une couleur</option>
         </select>
     </form>
