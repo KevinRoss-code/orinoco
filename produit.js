@@ -30,12 +30,17 @@ fetch("http://localhost:3000/api/teddies/" + params.get('id')).then(response =>{
           el.textContent = opt;
           el.value = opt;
           select.appendChild(el);
+          el.addEventListener("click", () =>{
+            let sauvJson = JSON.stringify(opt);
+            localStorage.setItem("couleur", sauvJson);
+          }, true); 
       };
 
    let bouton = document.createElement('button');
     bouton.setAttribute('class', "page panier");
     bouton.setAttribute('type', 'button');
-    bouton.textContent = "ajout" 
+    bouton.textContent = "ajout";
+    
     let lien = document.createElement('a');
     lien.setAttribute("href", "panier.html?" + "id=" + `${elements._id}`);
 
@@ -48,10 +53,10 @@ fetch("http://localhost:3000/api/teddies/" + params.get('id')).then(response =>{
     article.appendChild(descr);
     article.appendChild(lien);
     lien.appendChild(bouton);
-
-      let sauv = document.getElementById('sauv');
-      let sauvJson = JSON.stringify(elements.colors);
-      localStorage.setItem("couleur", sauvJson);
+  
+    
+      
+      
   
     });
     
