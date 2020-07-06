@@ -28,8 +28,14 @@ fetch('http://localhost:3000/api/teddies/order', {
             let cellule = document.createElement("tr");
             cellule.textContent = ('Résumer article');
             let ligne = document.createElement('td');
+            let ligne2 = document.createElement('td');
+            let ligne3 = document.createElement('td');
+            ligne.textContent = localStorage.getItem('couleur');
+            ligne2.textContent = localStorage.getItem('produit');
+            ligne3.textContent = localStorage.getItem('prix');
             
             let formulaire = document.createElement('form');
+            formulaire.setAttribute ('id', "formulaire");
             let labelName = document.createElement('label');
             labelName.textContent = 'Nom : '
             labelName.setAttribute  ('for', 'name');
@@ -73,6 +79,7 @@ fetch('http://localhost:3000/api/teddies/order', {
             let bouton = document.createElement('button');
             bouton.textContent = 'Commander';
             bouton.setAttribute  ('type', "summit");
+            bouton.setAttribute ('id', 'bouton');
             
             
             
@@ -80,6 +87,8 @@ fetch('http://localhost:3000/api/teddies/order', {
             section.appendChild(tableau);
             tableau.appendChild(cellule);
             cellule.appendChild(ligne);
+            cellule.appendChild(ligne2);
+            cellule.appendChild(ligne3);
             section.appendChild(formulaire);
             formulaire.appendChild(labelName);
             labelName.appendChild(inputName);
@@ -95,6 +104,7 @@ fetch('http://localhost:3000/api/teddies/order', {
 
             let sauvegarde = JSON.stringify(order);
             localStorage.setItem("contact", sauvegarde);
+
             
            
         });

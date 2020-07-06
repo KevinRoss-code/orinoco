@@ -4,15 +4,43 @@
     }
     p{
     font-size: 1em;
-}
-    h2{
-    text-align: center;
-    font-size: 1.5em;
+    }
+    #logo{
+        width: 70%;
+        margin-left: 20%;
+        margin-right: 20%;
+    }
+    table{
+        display: flex;
+        flex-direction: column;
+        border-collapse: collapse;
+    }
+    td{
+        font-size: 1.1em;
+        border: 1px solid black;
+    }
+    #formulaire{
+        display: block;
+        width: 40%;
+        float: left;
+        margin-top: 10%;
+    }
+    #bouton{
+        margin-top: 100%;
+    }
 }
 
+
+
 @media (min-width: 600px){
-    h2{
-        font-size: 2.4em;
+    #formulaire{
+        display: block;
+        width: 15%;
+        float: left;
+        margin-top: 10%;
+    }
+    #bouton{
+        margin-top: 55%;
     }
     p{
         font-size: 1.2em;
@@ -20,10 +48,15 @@
 }
 
 @media (min-width: 1000px){
-    h2{
-        font-size: 4em;
+    #formulaire{
+        display: block;
+        width: 5%;
+        float: left;
+        margin-top: 5%;
     }
-    #logo{
-        width: auto;
+    #bouton{
+        margin-top: 30%;
     }
+
+    
 }

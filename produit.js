@@ -54,7 +54,11 @@ fetch("http://localhost:3000/api/teddies/" + params.get('id')).then(response =>{
     article.appendChild(lien);
     lien.appendChild(bouton);
   
+    let sauvProduit = JSON.stringify(descr.textContent);
+      localStorage.setItem("produit", sauvProduit);
     
+      let sauvPrice = JSON.stringify(prix.textContent);
+      localStorage.setItem("prix", sauvPrice);
       
       
   
