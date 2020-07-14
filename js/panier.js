@@ -193,15 +193,24 @@ contact.ajoutEmail();
             ligne2.textContent = localStorage.getItem('produit');
             ligne3.textContent = localStorage.getItem('prix');
             
-            
-            let bouton = document.createElement('button');
-            bouton.textContent = 'Commander';
-            bouton.setAttribute  ('type', "summit");
-            bouton.setAttribute ('id', 'bouton');
-            bouton.addEventListener('click', () =>{
-                let sauvForm = JSON.stringify(contact);
-                localStorage.setItem('contact', sauvForm);
-            })
+
+            //let formDate = new FormData([formulaire]);
+
+            formulaire.onsubmit = async (e) =>{
+                e.preventDefault();
+
+                let response = await fetch('/article/formdate/post/user', {
+                    method: 'POST',
+                    body: new FormData(formulaire)
+                });
+
+                let result = await response.json();
+                alert(result.message);
+            }
+        document.getElementById("envoi").addEventListener('click', () => {
+            let sauv = JSON.stringify(formulaire);
+            localStorage.setItem('contact', sauv);
+        })
             
     
     
