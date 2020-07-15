@@ -5,7 +5,6 @@ const params = new URLSearchParams(url);
 
 
 
-//document.getElementById("produit").textContent = params.get('id');
 
 fetch("http://localhost:3000/api/teddies/" + params.get('id')).then(response =>{
     return response.json();
@@ -40,9 +39,12 @@ fetch("http://localhost:3000/api/teddies/" + params.get('id')).then(response =>{
     bouton.setAttribute('class', "page panier");
     bouton.setAttribute('type', 'button');
     bouton.textContent = "ajout";
-    
-    let lien = document.createElement('a');
-    lien.setAttribute("href", "panier.html?" + "id=" + `${elements._id}`);
+    bouton.addEventListener('click', (e) =>{
+      window.location = "./panier.html";
+    })
+    let panier = new Panier();
+panier.ajoutPanier(elements._id);
+
 
 
 
@@ -51,14 +53,7 @@ fetch("http://localhost:3000/api/teddies/" + params.get('id')).then(response =>{
     article.appendChild(image);
     article.appendChild(prix);
     article.appendChild(descr);
-    article.appendChild(lien);
-    lien.appendChild(bouton);
-  
-    let sauvProduit = JSON.stringify(descr.textContent);
-      localStorage.setItem("produit", sauvProduit);
-    
-      let sauvPrice = JSON.stringify(prix.textContent);
-      localStorage.setItem("prix", sauvPrice);
+    article.appendChild(bouton);
       
       
   
