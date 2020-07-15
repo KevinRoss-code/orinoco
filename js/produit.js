@@ -18,6 +18,7 @@ fetch("http://localhost:3000/api/teddies/" + params.get('id')).then(response =>{
        image.src = elements.imageUrl;
        let prix = document.createElement('p');
        prix.textContent = elements.price + " €";
+       prix.setAttribute('id', "prix");
 
        let descr = document.createElement('p');
        descr.textContent = elements.description;
@@ -41,9 +42,10 @@ fetch("http://localhost:3000/api/teddies/" + params.get('id')).then(response =>{
     bouton.textContent = "ajout";
     bouton.addEventListener('click', (e) =>{
       window.location = "./panier.html";
+      let panier = new Panier();
+      panier.ajoutPanier();
     })
-    let panier = new Panier();
-panier.ajoutPanier(elements._id);
+    
 
 
 
@@ -51,8 +53,8 @@ panier.ajoutPanier(elements._id);
     section.appendChild(article);
     article.appendChild(nom);
     article.appendChild(image);
-    article.appendChild(prix);
     article.appendChild(descr);
+    article.appendChild(prix);
     article.appendChild(bouton);
       
       

@@ -4,10 +4,14 @@
     }
     p{
     font-size: 1em;
+    text-align: justify;
 }
     h2{
     text-align: center;
-    font-size: 1.5em;
+    font-size: 2.5em;
+}
+#prix{
+    text-align: center;
 }
     
     img{
@@ -16,23 +20,102 @@
     margin-left: auto;
     margin-right: auto;
     margin-bottom: 10%;
-    width: 60%;
+    width: 70%;
+}
+form{
+    position: absolute;
+    top: 55%;
+    margin-right: 25%;
+    margin-left: 25%;
+    
+}
+button{
+    position: absolute;
+    top: 60%;
+    margin-left: 40%;
+    margin-right: 40%;
+}
 }
 
 @media (min-width: 600px){
     h2{
-        font-size: 2.4em;
+        font-size: 3em;
     }
     p{
         font-size: 1.2em;
     }
+    form{
+        position: absolute;
+        top: 80%;
+        margin-right: 38%;
+        margin-left: 38%;
+        
+        
+    }
+    button{
+        position: absolute;
+        top: 90%;
+        margin-left: 43%;
+        margin-right: 43%;
+        font-size: 1.5em;
+    }
+}
+@media(min-width: 800px){
+    form{
+    position: absolute;
+    top: 90%;
+    margin-right: 40%;
+    margin-left: 40%;
+    margin-top: 2%;
+    
+}
+button{
+    position: absolute;
+    top: 95%;
+    margin-left: 46%;
+    margin-right: 46%;
+    margin-top: 2%;
+
+}
 }
 
 @media (min-width: 1000px){
     h2{
-        font-size: 5em;
+        font-size: 6em;
     }
     #logo{
         width: auto;
+    }
+    p{
+        text-align: center;
+    }
+    form{
+        position: absolute;
+        top: 120%;
+        margin-right: 43%;
+        margin-left: 43%;
+        
+    }
+    button{
+        position: absolute;
+        top: 125%;
+        margin-left: 47%;
+        margin-right: 47%;
+    }
+}
+@media(min-width: 1300px){
+    form{
+        position: absolute;
+        top: 275%;
+        margin-right: 45%;
+        margin-left: 45%;
+        
+    }
+    button{
+        position: absolute;
+        top: 285%;
+        margin-left: 47%;
+        margin-right: 47%;
+        margin-bottom: 10%;
     }
 }
