@@ -9,6 +9,8 @@ const params = new URLSearchParams(url);
 fetch("http://localhost:3000/api/teddies/" + params.get('id')).then(response =>{
     return response.json();
 }).then(elements =>{
+
+  
        //penser à faire document.getElementById
       let section = document.getElementById('produit');
       let article = document.createElement('article');
@@ -33,6 +35,7 @@ fetch("http://localhost:3000/api/teddies/" + params.get('id')).then(response =>{
           el.addEventListener("click", () =>{
             let sauvJson = JSON.stringify(opt);
             localStorage.setItem("couleur", sauvJson);
+            
           }, true); 
       };
 
@@ -41,10 +44,10 @@ fetch("http://localhost:3000/api/teddies/" + params.get('id')).then(response =>{
     bouton.setAttribute('type', 'button');
     bouton.textContent = "ajout";
     bouton.addEventListener('click', (e) =>{
-      window.location = "./panier.html";
       let panier = new Panier();
       panier.ajoutPanier();
-    })
+      window.location = "./panier.html";
+      })
     
 
 
@@ -55,6 +58,7 @@ fetch("http://localhost:3000/api/teddies/" + params.get('id')).then(response =>{
     article.appendChild(image);
     article.appendChild(descr);
     article.appendChild(prix);
+    article.appendChild(select)
     article.appendChild(bouton);
       
       

@@ -2,6 +2,7 @@
            let section =  document.getElementById('panier');
 
             let tableau= document.createElement("table");
+            tableau.setAttribute('id', 'table')
             let cellule = document.createElement("tr");
             cellule.textContent = ('Résumer article');
             let ligne = document.createElement('td');
