@@ -36,6 +36,7 @@ fetch("http://localhost:3000/api/teddies/" + params.get('id')).then(response =>{
             let sauvJson = JSON.stringify(opt);
             localStorage.setItem("couleur", sauvJson);
             
+            
           }, true); 
       };
 
@@ -43,9 +44,7 @@ fetch("http://localhost:3000/api/teddies/" + params.get('id')).then(response =>{
     bouton.setAttribute('class', "page panier");
     bouton.setAttribute('type', 'button');
     bouton.textContent = "ajout";
-    bouton.addEventListener('click', (e) =>{
-      let panier = new Panier();
-      panier.ajoutPanier();
+    bouton.addEventListener('click', () =>{
       window.location = "./panier.html";
       })
     
