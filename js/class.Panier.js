@@ -4,10 +4,10 @@ class Panier {
     }
 
     ajoutPanier = (item) => {
-        if(item === ""){
+        
             this.content.push(item);
             localStorage.setItem('panier', JSON.stringify(this.content));
-        }
+        
         
     }
     supprimerPanier(item){
@@ -32,13 +32,14 @@ class Panier {
     }
     additionPrix(){
         document.getElementById("table");
-        this.content.forEach(elements =>{
-            for(let prix = `${elements.price}`; prix < 10; prix++){
-                console.log(prix);
+        let totalPrice = 0
+            for(let index = 0; index < this.content.length; index++){
+                totalPrice += this.content[index].price
             }
+            console.log(totalPrice);
           
 
-        })
+        
     }
 }
 

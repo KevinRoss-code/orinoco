@@ -2,6 +2,8 @@
 
 const url = window.location.search;
 const params = new URLSearchParams(url);
+let panier = new Panier();
+let selectedColor = "";
 
 
 
@@ -34,7 +36,7 @@ fetch("http://localhost:3000/api/teddies/" + params.get('id')).then(response =>{
           select.appendChild(el);
           el.addEventListener("click", () =>{
             let sauvJson = JSON.stringify(opt);
-            localStorage.setItem("couleur", sauvJson);
+            selectedColor = sauvJson;
             
             
           }, true); 
@@ -45,7 +47,10 @@ fetch("http://localhost:3000/api/teddies/" + params.get('id')).then(response =>{
     bouton.setAttribute('type', 'button');
     bouton.textContent = "ajout";
     bouton.addEventListener('click', () =>{
-      window.location = "./panier.html";
+      elements.selectedColor = selectedColor;
+      panier.ajoutPanier(elements);
+      //window.location = "./panier.html";
+      panier.additionPrix();
       })
     
 
