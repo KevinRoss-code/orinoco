@@ -1,13 +1,25 @@
+let panier = new Panier();
 
            let section =  document.getElementById('panier');
 
             let tableau= document.createElement("table");
-            tableau.setAttribute('id', 'table')
-            let cellule = document.createElement("tr");
-            cellule.textContent = ('Résumer article');
-            let ligne = document.createElement('td');
-            ligne.textContent = localStorage.getItem('couleur');
+            tableau.setAttribute('id', 'table');
+            let teteTable = document.createElement("thead")
+            let ligne = document.createElement("tr");
+            let titreName = document.createElement('th');
+            titreName.textContent = 'Article(s)'; 
+            let titrePrix = document.createElement('th');
+            titrePrix.textContent = "Prix";
 
+            section.appendChild(tableau);
+            tableau.appendChild(teteTable);
+            teteTable.appendChild(ligne);
+            ligne.appendChild(titreName);
+            ligne.appendChild(titrePrix);
+
+            panier.ajouterLigne();
+            panier.ajouterLignePrix();
+           
             
 
             //let formDate = new FormData([formulaire]);
@@ -34,9 +46,7 @@
             
             
             
-            section.appendChild(tableau);
-            tableau.appendChild(cellule);
-            cellule.appendChild(ligne);
+            
 
 
             

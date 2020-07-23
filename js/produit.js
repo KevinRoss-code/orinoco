@@ -49,8 +49,7 @@ fetch("http://localhost:3000/api/teddies/" + params.get('id')).then(response =>{
     bouton.addEventListener('click', () =>{
       elements.selectedColor = selectedColor;
       panier.ajoutPanier(elements);
-      //window.location = "./panier.html";
-      panier.additionPrix();
+      window.location = "./panier.html";
       })
     
 
