@@ -11,9 +11,9 @@ class Panier {
         
     }
     supprimerPanier(){
-        let choice = parseInt(document.getElementById('supp').value);
-        if (choice > 0 && choice <= this.ajouterLigne()){
-            let produit = this.ajouterLigne()[choice-1];
+        let choice = parseInt(document.getElementById('supp'));
+        if (choice > 0 && choice <= this.content){
+            let produit = this.content[choice-1];
         }
     }
 
@@ -26,9 +26,8 @@ class Panier {
             ajoutCellule1.innerHTML = '<input type="text" id="nameProduit">';
             //https://blog.arcoptimizer.com/options-de-stockage-dans-le-navigateur-partie-1
             let name =  JSON.parse(localStorage.getItem('panier'));
-            let cle = Object.keys("name");
-            console.log(cle);
-            document.getElementById("nameProduit").value = this.content;
+
+            //document.getElementById("nameProduit").value = this.content;
             
             console.log(name);
             let ajoutCellule2 = ajoutLigne.insertCell(1);
