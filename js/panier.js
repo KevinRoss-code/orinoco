@@ -26,8 +26,8 @@ let panier = new Panier();
 
             formulaire.onsubmit = async (e) =>{
                 e.preventDefault();
-
-                let response = await fetch('/article/formdate/post/user', {
+                // mettre traitement là
+                let response = await fetch("http://localhost:3000/api/teddies/", {
                     method: 'POST',
                     body: new FormData(formulaire)
                 });

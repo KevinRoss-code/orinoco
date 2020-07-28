@@ -19,15 +19,16 @@ class Panier {
 
     ajouterLigne(){
         document.getElementById('table');
-        let ligne = ""
+        let ligne = "";
+        //let panier =  JSON.parse(localStorage.getItem('panier'));
         for( let index = 0; index < this.content.length; index++){
             let ajoutLigne = table.insertRow(1);
             let ajoutCellule1 = ajoutLigne.insertCell(0);
             ajoutCellule1.innerHTML = '<input type="text" id="nameProduit">';
             //https://blog.arcoptimizer.com/options-de-stockage-dans-le-navigateur-partie-1
-            let name =  JSON.parse(localStorage.getItem('panier'));
+            
 
-            //document.getElementById("nameProduit").value = this.content;
+            document.getElementById("nameProduit").value = this.content[index].name;
             
             console.log(name);
             let ajoutCellule2 = ajoutLigne.insertCell(1);
