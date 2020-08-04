@@ -10,29 +10,18 @@ class Panier {
         
         
     }
-    supprimerPanier(){
-        let choice = parseInt(document.getElementById('supp'));
-        if (choice > 0 && choice <= this.content){
-            let produit = this.content[choice-1];
-        }
-    }
-
+    
     ajouterLigne(){
         document.getElementById('table');
         let ligne = "";
-        //let panier =  JSON.parse(localStorage.getItem('panier'));
         for( let index = 0; index < this.content.length; index++){
             let ajoutLigne = table.insertRow(1);
             let ajoutCellule1 = ajoutLigne.insertCell(0);
             ajoutCellule1.innerHTML = '<input type="text" id="nameProduit">';
-            //https://blog.arcoptimizer.com/options-de-stockage-dans-le-navigateur-partie-1
-            
-
             document.getElementById("nameProduit").value = this.content[index].name;
-            
-            console.log(name);
             let ajoutCellule2 = ajoutLigne.insertCell(1);
-            ajoutCellule2.textContent = "price";
+            ajoutCellule2.innerHTML = '<input type="text" id="prixProduit">';
+            document.getElementById('prixProduit').value = this.content[index].price;
             let cellDelet = ajoutLigne.insertCell(2);
             cellDelet.innerHTML = '<input type="button" value="supprimer" id="supp">';
             cellDelet.addEventListener('click', () => {
@@ -43,7 +32,7 @@ class Panier {
     }
     ajouterLignePrix(){
         let table = document.getElementById("table");
-        let ajoutLigne2 = table.insertRow(2);
+        let ajoutLigne2 = table.insertRow();
         let ajoutCellule = ajoutLigne2.insertCell(0);
         ajoutCellule.textContent = 'Total';
         let ajoutCellPrice = ajoutLigne2.insertCell(1);
@@ -62,5 +51,13 @@ class Panier {
 
         
     }
+
+    supprimerPanier(){
+        let choice = parseInt(document.getElementById('supp'));
+        if (choice.options.index>=0){
+            choice.options[choice.options.selectedIndex] = null;
+        }
+    }
+
 }
 

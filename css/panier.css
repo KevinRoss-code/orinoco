@@ -2,6 +2,10 @@
     body{
         background-color: #F3E9F1;
     }
+    section{
+        display: flex;
+        flex-direction: column-reverse;
+    }
     p{
     font-size: 1em;
     }
@@ -10,14 +14,22 @@
         margin-left: 20%;
         margin-right: 20%;
     }
-    table{
-        display: flex;
-        flex-direction: column;
+    #table{
+        table-layout: fixed;
         border-collapse: collapse;
+        width: 100%;
+    }
+    input{
+        width: 80%;
+        text-align: center;
+    }
+    th{
+        border: 1px solid black;
     }
     td{
         font-size: 1.1em;
         border: 1px solid black;
+        text-align: center;
     }
     #formulaire{
         display: block;
@@ -48,6 +60,9 @@
 }
 
 @media (min-width: 1000px){
+    #table{
+        width: 50%;
+    }
     #formulaire{
         display: block;
         width: 5%;
