@@ -23,9 +23,9 @@ class Panier {
             ajoutCellule2.innerHTML = '<input type="text" id="prixProduit">';
             document.getElementById('prixProduit').value = this.content[index].price;
             let cellDelet = ajoutLigne.insertCell(2);
-            cellDelet.innerHTML = '<input type="button" value="supprimer" id="supp">';
-            cellDelet.addEventListener('click', () => {
-                this.supprimerPanier();
+            cellDelet.innerHTML = `<input type="button" value="supprimer" id="supp_${index}">`;
+            cellDelet.addEventListener('click', (e) => {
+                this.supprimerPanier(e);
             })
         }
         
@@ -52,11 +52,9 @@ class Panier {
         
     }
 
-    supprimerPanier(){
-        let choice = parseInt(document.getElementById('supp'));
-        if (choice.options.index>=0){
-            choice.options[choice.options.selectedIndex] = null;
-        }
+    supprimerPanier(event){
+        let idPAnier = event.target.id.split('_')[1];
+        alert(idPAnier);
     }
 
 }

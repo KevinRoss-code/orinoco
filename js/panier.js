@@ -22,76 +22,24 @@ let panier = new Panier();
             panier.ajouterLignePrix();
            
            let form = document.getElementById("formulaire").addEventListener("submit", function(e) {
-                function validateEmail(email) {
-                    let re = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
-                    return re.test(email);
-                    }
-                    
-                    function Verification() {
-                    // Récupérer la valeur des champs
-                    let nom = document.getElementById('name').value;
-                    let prenom = document.getElementById('surname').value;
-                    let adresse = document.getElementById('adress').value;
-                    let ville = document.getElementById('city').value;
-                    let email = document.getElementById('mail').value;
-                    
-                    
-                    if(nom ==''){
-                        alert('Vous devez compléter votre nom !');
-                        document.getElementById('name').style.backgroundColor="red";
-                        document.getElementById('name').style.color="#FFF";
-                    
-                    
-                    return false;
-                    }
-                    if(prenom ==''){
-                        alert('Vous devez compléter votre prénom !');
-                        document.getElementById('surname').style.backgroundColor="red";
-                        document.getElementById('surname').style.color="#FFF";
-                    
-                    
-                    return false;
-                    }
+                e.preventDefault();
+           
 
-                    if(adresse==''){
-                        alert('Vous devez compléter votre adresse !');
-                    document.getElementById('adress').style.backgroundColor="red";
-                    document.getElementById('adress').style.color="#FFF";
-                    
-                    
-                    return false;
-                    }
+                    let contact = {};
+                    Verification(contact);
 
-                    if(ville==''){
-                        alert('Vous devez compléter votre ville !');
-                    document.getElementById('city').style.backgroundColor="red";
-                    document.getElementById('city').style.color="#FFF";
                     
-                    
-                    return false;
-                    }
-                    else{
-                    document.getElementsByTagName('input').style.backgroundColor="#9C6";
-                    }
-                    
-                    // Contrôle sur l'email
-                    if(email=='') {
-                    alert('Vous devez compléter votre adresse email');
-                    document.getElementById('mail').style.backgroundColor="red";
-                    document.getElementById('mail').style.color="#FFF";
-                    return false;
-                    }
-                    
-                    else{
-                    document.getElementById('mail').style.backgroundColor="#9C6";
-                    }
-                    }
+
+                    let sauvForm = JSON.stringify(contact);
+                    localStorage.setItem('client', sauvForm);
+
                     
             });
 
-            let sauvForm = JSON.stringify(form);
-                    localStorage.setItem('client', sauvForm);
 
+
+
+            
             
 
             
@@ -203,3 +151,69 @@ let panier = new Panier();
         
                 })*/
 
+function Verification(contact) {
+                    // Récupérer la valeur des champs
+                    contact.nom = document.getElementById('name').value;
+                    contact.prenom = document.getElementById('surname').value;
+                    contact.adresse = document.getElementById('adress').value;
+                    contact.ville = document.getElementById('city').value;
+                    contact.email = document.getElementById('mail').value;
+                    
+                    
+                    if(contact.nom ==''){
+                        alert('Vous devez compléter votre nom !');
+                        document.getElementById('name').style.backgroundColor="red";
+                        document.getElementById('name').style.color="#FFF";
+                    
+                    
+                    return false;
+                    }
+                    if(contact.prenom ==''){
+                        alert('Vous devez compléter votre prénom !');
+                        document.getElementById('surname').style.backgroundColor="red";
+                        document.getElementById('surname').style.color="#FFF";
+                    
+                    
+                    return false;
+                    }
+
+                    if(contact.adresse==''){
+                        alert('Vous devez compléter votre adresse !');
+                    document.getElementById('adress').style.backgroundColor="red";
+                    document.getElementById('adress').style.color="#FFF";
+                    
+                    
+                    return false;
+                    }
+
+                    if(contact.ville==''){
+                        alert('Vous devez compléter votre ville !');
+                    document.getElementById('city').style.backgroundColor="red";
+                    document.getElementById('city').style.color="#FFF";
+                    
+                    
+                    return false;
+                    }
+                    else{
+                    ///document.getElementsByTagName('input').style.backgroundColor="#9C6";
+                    }
+                    
+                    // Contrôle sur l'email
+                    if(contact.email=='') {
+                    alert('Vous devez compléter votre adresse email');
+                    document.getElementById('mail').style.backgroundColor="red";
+                    document.getElementById('mail').style.color="#FFF";
+                    return false;
+                    }
+                    
+                    else{
+                    document.getElementById('mail').style.backgroundColor="#9C6";
+                    }
+                    }
+
+
+
+                    function validateEmail(email) {
+                        let re = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
+                        return re.test(email);
+                        }
