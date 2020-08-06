@@ -22,7 +22,7 @@ let panier = new Panier();
             panier.ajouterLignePrix();
            
            let form = document.getElementById("formulaire").addEventListener("submit", function(e) {
-                //e.preventDefault();
+                e.preventDefault();
            
 
                     let contact = {};
@@ -32,9 +32,10 @@ let panier = new Panier();
 
                     let sauvForm = JSON.stringify(contact);
                     localStorage.setItem('client', sauvForm);
-
+                window.location = "./confirmation.html";
+                    })
                     
-            });
+            
 
 
 

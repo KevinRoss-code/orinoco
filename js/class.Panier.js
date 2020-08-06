@@ -46,11 +46,9 @@ class Panier {
             for(let index = 0; index < this.content.length; index++){
                 totalPrice += this.content[index].price
             }
+            localStorage.setItem('prixTotal', totalPrice);
             return totalPrice;
-          
-
-        
-    }
+        }
 
     supprimerPanier(event){
 
