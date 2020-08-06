@@ -22,7 +22,7 @@ let panier = new Panier();
             panier.ajouterLignePrix();
            
            let form = document.getElementById("formulaire").addEventListener("submit", function(e) {
-                e.preventDefault();
+                //e.preventDefault();
            
 
                     let contact = {};

@@ -53,8 +53,15 @@ class Panier {
     }
 
     supprimerPanier(event){
-        let idPAnier = event.target.id.split('_')[1];
-        alert(idPAnier);
+
+        let choice = localStorage.getItem('panier');
+        let idElementPanier = JSON.parse(choice);
+        let index = this.content.indexOf(idElementPanier);
+        this.content.splice(index, -1);
+        alert('fait');
+
+        //let idPAnier = event.target.id.split('_')[1];
+        //alert(idPAnier);
     }
 
 }
