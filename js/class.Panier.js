@@ -16,6 +16,7 @@ class Panier {
         let ligne = "";
         for( let index = 0; index < this.content.length; index++){
             let ajoutLigne = table.insertRow(1);
+            ajoutLigne.id = 'produit_' + index;
             let ajoutCellule1 = ajoutLigne.insertCell(0);
             ajoutCellule1.innerHTML = '<input type="text" id="nameProduit">';
             document.getElementById("nameProduit").value = this.content[index].name;
@@ -51,12 +52,19 @@ class Panier {
         }
 
     supprimerPanier(event){
+    
+        let id = event.target.id.split('_')[1];
+        this.content.splice(id, 1);
+        localStorage.setItem('panier', JSON.stringify(this.content));
+        //faire en deux temps avec variable
+        document.getElementById('produit_'+ id).parentNode.removeChild(document.getElementById('produit_'+ id));
 
-        let choice = localStorage.getItem('panier');
+
+                /*let choice = localStorage.getItem('panier');
         let idElementPanier = JSON.parse(choice);
         let index = this.content.indexOf(idElementPanier);
-        this.content.splice(index, -1);
-        alert('fait');
+        
+        alert('fait');*/
 
         //let idPAnier = event.target.id.split('_')[1];
         //alert(idPAnier);
