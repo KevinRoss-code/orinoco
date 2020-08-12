@@ -57,7 +57,8 @@ class Panier {
         this.content.splice(id, 1);
         localStorage.setItem('panier', JSON.stringify(this.content));
         //faire en deux temps avec variable
-        document.getElementById('produit_'+ id).parentNode.removeChild(document.getElementById('produit_'+ id));
+        let produit = document.getElementById('produit_'+ id)
+        produit.parentNode.removeChild(document.getElementById('produit_'+ id));
 
 
                 /*let choice = localStorage.getItem('panier');
