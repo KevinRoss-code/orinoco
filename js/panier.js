@@ -24,28 +24,31 @@ let panier = new Panier();
            let form = document.getElementById("formulaire").addEventListener("submit", function(e) {
                 e.preventDefault();
            
-
-                    let contact = {};
-                    verification(contact);
-
-                    
-
-                    let sauvForm = JSON.stringify(contact);
-                    localStorage.setItem('client', sauvForm);
+                let contact = {};
+                verification(contact);
+                let sauvForm = JSON.stringify(contact);
+                localStorage.setItem('client', sauvForm);
                 window.location = "./confirmation.html";
+
+                let formData = new FormData(this);
+                let searchParams = new URLSearchParams();
+
+                for (let pair of formData){
+                    searchParams.append(pair[0], pair[1]);
+                }
+                fetch('http://localhost:3000/api/teddies/', {
+                    method: 'post',
+                    body: searchParams
+                }).then(function (response){
+                    return response.text();
+                }).then(function (text){
+                    console.log(text);
+                }).catch(function (erreur){
+                    console.log(erreur);
+                })
 })
 
-formulaire.onsubmit = async (e) => {
-    
 
-    let response = await fetch("http://localhost:3000/api/teddies/", {
-        method: 'POST',
-        body: new FormData(formulaire)
-    });
-
-    let result = await response.json();
-    alert(result.message);
-}
 
 
 function verification(contact) {
@@ -92,7 +95,7 @@ function verification(contact) {
                     return false;
                     }
                     else{
-                    ///document.getElementsByTagName('input').style.backgroundColor="#9C6";
+                    //document.getElementsByTagName('input').style.backgroundColor="#9C6";
                     }
                     
                     // Contrôle sur l'email
@@ -114,3 +117,15 @@ function verification(contact) {
                         let re = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
                         return re.test(email);
                         }
+
+/*formulaire.onsubmit = async (e) => {
+    
+
+    let response = await fetch("http://localhost:3000/api/teddies/", {
+        method: 'POST',
+        body: new FormData(formulaire)
+    });
+
+    let result = await response.json();
+    alert(result.message);
+}*/
