@@ -20,35 +20,31 @@ let panier = new Panier();
 
             panier.ajouterLigne();
             panier.ajouterLignePrix();
-           
-           let form = document.getElementById("formulaire").addEventListener("submit", function(e) {
+
+            
+
+            let form = document.getElementById("formulaire").addEventListener("submit", async function(e) {
                 e.preventDefault();
+                window.location = "./confirmation.html";
+                let data = new FormData(form);
+                let response = await fetch('http://localhost:3000/api/teddies/', {
+                    method: 'POST',
+                    body: data
+                })
+                let responsData = await response.json();
            
                 let contact = {};
                 verification(contact);
-                let sauvForm = JSON.stringify(contact);
-                localStorage.setItem('client', sauvForm);
-                window.location = "./confirmation.html";
+                //let sauvForm = JSON.stringify(contact);
+                //localStorage.setItem('client', sauvForm);
+                
+            }); 
+            
+            
+            
 
-                let formData = new FormData(this);
-                let searchParams = new URLSearchParams();
-
-                for (let pair of formData){
-                    searchParams.append(pair[0], pair[1]);
-                }
-                fetch('http://localhost:3000/api/teddies/', {
-                    method: 'post',
-                    body: searchParams
-                }).then(function (response){
-                    return response.text();
-                }).then(function (text){
-                    console.log(text);
-                }).catch(function (erreur){
-                    console.log(erreur);
-                })
-})
-
-
+                
+                
 
 
 function verification(contact) {
@@ -109,23 +105,31 @@ function verification(contact) {
                     else{
                     document.getElementById('mail').style.backgroundColor="#9C6";
                     }
-                    }
 
-
-
+                    
+}
                     function validateEmail(email) {
                         let re = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
                         return re.test(email);
                         }
+                        
+                     
+                        /*let formData = new FormData();
+                        let searchParams = new URLSearchParams();
+        
+                        
+                        fetch('http://localhost:3000/api/teddies/posts', {
+                            method: 'post',
+                            body: formData
+                        }).then(response =>{
+                            return response.text();
+                        }).then(text =>{
+                            console.log(text);
+                        }).catch(erreur =>{
+                            console.log(erreur);
+                        })*/
+        
 
-/*formulaire.onsubmit = async (e) => {
-    
 
-    let response = await fetch("http://localhost:3000/api/teddies/", {
-        method: 'POST',
-        body: new FormData(formulaire)
-    });
-
-    let result = await response.json();
-    alert(result.message);
-}*/
+                        
+                        

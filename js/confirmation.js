@@ -1,7 +1,7 @@
 let prix = localStorage.getItem('prixTotal');
 let section = document.getElementById('flemme');
 let div = document.createElement('p');
-div.textContent = "Total de votre commande " + prix +"€";
+div.textContent = "Total de votre commande : " + prix +"€";
 
 
 
@@ -12,4 +12,3 @@ div.textContent = "Total de votre commande " + prix +"€";
 
 
 section.appendChild(div);
-//console.log(prix);
