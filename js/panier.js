@@ -22,8 +22,11 @@ let section =  document.getElementById('panier');
            
            let form = document.getElementById("formulaire").addEventListener("submit", function(e) {
                
+            validation();
                 e.preventDefault();
-                window.location = "./confirmation.html";
+                
+                
+                
                 let formData = new FormData(formulaire);
 
                 
@@ -42,19 +45,8 @@ let section =  document.getElementById('panier');
 
 
                 // il faut penser à envoyer aussi la liste des id des produits dans le panier (cf backend)
-                /**
-                *
-                * Expects request to contain:
-                * contact: {
-                *   firstName: string,
-                *   lastName: string,
-                *   address: string,
-                *   city: string,
-                *   email: string
-                * }
-                * products: [string] <-- array of product _id
-                *
-                */
+                
+                
                     let requestBody = {contact, products};
                     //console.log(requestBody);
                     const myHeaders = new Headers();
@@ -67,214 +59,91 @@ let section =  document.getElementById('panier');
                 body: JSON.stringify(requestBody)
                 }).then(respons => respons.json()).then(result => console.log(result));
                
-                verification(contact);
+                
 
                     
 
-                    let sauvForm = JSON.stringify(contact);
-                    localStorage.setItem('client', sauvForm);
+                    //let sauvForm = JSON.stringify(contact);
+                    //localStorage.setItem('client', sauvForm);
                 
 })
 
+ function validation(){
+     // Récupérer la valeur des champs
+     let nom = document.getElementById('name');
+     let prenom = document.getElementById('surname');
+     let adresse = document.getElementById('adress');
+     let ville = document.getElementById('city');
+     let email = document.getElementById('mail');
 
+     let regexTexte = /^[a-zA-Z-\s]+$/;
+     
+     let regexEmail =/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
 
-
-function verification(contact) {
-                    // Récupérer la valeur des champs
-                    contact.nom = document.getElementById('name').value;
-                    contact.prenom = document.getElementById('surname').value;
-                    contact.adresse = document.getElementById('adress').value;
-                    contact.ville = document.getElementById('city').value;
-                    contact.email = document.getElementById('mail').value;
-                    
-                    
-                    if(contact.nom ==''){
-                        alert('Vous devez compléter votre nom !');
-                        document.getElementById('name').style.backgroundColor="red";
-                        document.getElementById('name').style.color="#FFF";
-                    
-                    
-                    return false;
-                    }
-                    if(contact.prenom ==''){
-                        alert('Vous devez compléter votre prénom !');
-                        document.getElementById('surname').style.backgroundColor="red";
-                        document.getElementById('surname').style.color="#FFF";
-                    
-                    
-                    return false;
-                    }
-
-                    if(contact.adresse==''){
-                        alert('Vous devez compléter votre adresse !');
-                    document.getElementById('adress').style.backgroundColor="red";
-                    document.getElementById('adress').style.color="#FFF";
-                    
-                    
-                    return false;
-                    }
-
-                    if(contact.ville==''){
-                        alert('Vous devez compléter votre ville !');
-                    document.getElementById('city').style.backgroundColor="red";
-                    document.getElementById('city').style.color="#FFF";
-                    
-                    
-                    return false;
-                    }
-                    else{
-                    ///document.getElementsByTagName('input').style.backgroundColor="#9C6";
-                    }
-                    
-                    // Contrôle sur l'email
-                    if(contact.email=='') {
-                    alert('Vous devez compléter votre adresse email');
-                    document.getElementById('mail').style.backgroundColor="red";
-                    document.getElementById('mail').style.color="#FFF";
-                    return false;
-                    }
-                    
-                    else{
-                    document.getElementById('mail').style.backgroundColor="#9C6";
-                    }
-                    }
-
-
-
-                    function validateEmail(email) {
-                        let re = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
-                        return re.test(email);
-                        } 
-
-
-           /*let section =  document.getElementById('panier');
-
-            let tableau= document.createElement("table");
-            tableau.setAttribute('id', 'table');
-            let teteTable = document.createElement("thead")
-            let ligne = document.createElement("tr");
-            let titreName = document.createElement('th');
-            titreName.textContent = 'Article(s)'; 
-            let titrePrix = document.createElement('th');
-            titrePrix.textContent = "Prix";
-
-            section.appendChild(tableau);
-            tableau.appendChild(teteTable);
-            teteTable.appendChild(ligne);
-            ligne.appendChild(titreName);
-            ligne.appendChild(titrePrix);
-
-            panier.ajouterLigne();
-            panier.ajouterLignePrix();
-
-            
-
-            let form = document.getElementById("formulaire").addEventListener("submit", async function(e) {
-                e.preventDefault();
-                window.location = "./confirmation.html";
-                let data = new FormData(form);
-                let response = await fetch('http://localhost:3000/api/teddies/', {
-                    method: 'POST',
-                    body: data
-                })
-                let responsData = await response.json();
-           
-                let contact = {};
-                verification(contact);
-                //let sauvForm = JSON.stringify(contact);
-                //localStorage.setItem('client', sauvForm);
-                
-            }); 
-            
-            
-            
-
-                
-                
-
-
-function verification(contact) {
-                    // Récupérer la valeur des champs
-                    contact.nom = document.getElementById('name').value;
-                    contact.prenom = document.getElementById('surname').value;
-                    contact.adresse = document.getElementById('adress').value;
-                    contact.ville = document.getElementById('city').value;
-                    contact.email = document.getElementById('mail').value;
-                    
-                    
-                    if(contact.nom ==''){
-                        alert('Vous devez compléter votre nom !');
-                        document.getElementById('name').style.backgroundColor="red";
-                        document.getElementById('name').style.color="#FFF";
-                    
-                    
-                    return false;
-                    }
-                    if(contact.prenom ==''){
-                        alert('Vous devez compléter votre prénom !');
-                        document.getElementById('surname').style.backgroundColor="red";
-                        document.getElementById('surname').style.color="#FFF";
-                    
-                    
-                    return false;
-                    }
-
-                    if(contact.adresse==''){
-                        alert('Vous devez compléter votre adresse !');
-                    document.getElementById('adress').style.backgroundColor="red";
-                    document.getElementById('adress').style.color="#FFF";
-                    
-                    
-                    return false;
-                    }
-
-                    if(contact.ville==''){
-                        alert('Vous devez compléter votre ville !');
-                    document.getElementById('city').style.backgroundColor="red";
-                    document.getElementById('city').style.color="#FFF";
-                    
-                    
-                    return false;
-                    }
-                    else{
-                    //document.getElementsByTagName('input').style.backgroundColor="#9C6";
-                    }
-                    
-                    // Contrôle sur l'email
-                    if(contact.email=='') {
-                    alert('Vous devez compléter votre adresse email');
-                    document.getElementById('mail').style.backgroundColor="red";
-                    document.getElementById('mail').style.color="#FFF";
-                    return false;
-                    }
-                    
-                    else{
-                    document.getElementById('mail').style.backgroundColor="#9C6";
-                    }
-
-                    
-}
-                    function validateEmail(email) {
-                        let re = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
-                        return re.test(email);
-                        }
-                        
-                     
-                        /*let formData = new FormData();
-                        let searchParams = new URLSearchParams();
+     if (nom.value == ""){
+         let myErreur = document.getElementById("erreur");
+         myErreur.innerHTML = 'le champs est vide';
+         myErreur.style.color = 'red';
+         
+     } else if (regexTexte.test(nom.value) == false) {
+        let myErreur = document.getElementById("erreur");
+        myErreur.innerHTML = 'Synthaxe non valide';
+        myErreur.style.color = 'red';
         
-                        
-                        fetch('http://localhost:3000/api/teddies/posts', {
-                            method: 'post',
-                            body: formData
-                        }).then(response =>{
-                            return response.text();
-                        }).then(text =>{
-                            console.log(text);
-                        }).catch(erreur =>{
-                            console.log(erreur);
-                        })*/
+     }
+
+     if (prenom.value == ""){
+        let myErreur = document.getElementById("erreur2");
+        myErreur.innerHTML = 'le champs est vide';
+        myErreur.style.color = 'red';
         
+    } else if (regexTexte.test(prenom.value) == false) {
+       let myErreur = document.getElementById("erreur2");
+       myErreur.innerHTML = 'Synthaxe non valide';
+       myErreur.style.color = 'red';
+       }
+
+       if (adresse.value == ""){
+        let myErreur = document.getElementById("erreur3");
+        myErreur.innerHTML = 'le champs est vide';
+        myErreur.style.color = 'red';
+        
+    } else if (adresse == true) {
+       console.log(adresse)
+    }
+
+    if (ville.value == ""){
+        let myErreur = document.getElementById("erreur4");
+        myErreur.innerHTML = 'le champs est vide';
+        myErreur.style.color = 'red';
+        
+    } else if (regexTexte.test(ville.value) == false) {
+       let myErreur = document.getElementById("erreur4");
+       myErreur.innerHTML = 'Synthaxe non valide';
+       myErreur.style.color = 'red';
+       
+    }
+
+    if (email.value == ""){
+        let myErreur = document.getElementById("erreur5");
+        myErreur.innerHTML = 'le champs est vide';
+        myErreur.style.color = 'red';
+        
+    } else if (regexEmail.test(email.value) == false) {
+       let myErreur = document.getElementById("erreur5");
+       myErreur.innerHTML = 'Synthaxe non valide';
+       myErreur.style.color = 'red';
+       
+    } else {
+        //trouver un moyen que ça se déclanche que si tout est bon
+        window.location = "./confirmation.html";
+
+    }
+ }
+
+
+
+
 
 
                         
