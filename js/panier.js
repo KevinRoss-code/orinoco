@@ -23,9 +23,10 @@ let section =  document.getElementById('panier');
            let form = document.getElementById("formulaire").addEventListener("submit", function(e) {
                
                 e.preventDefault();
+                window.location = "./confirmation.html";
                 let formData = new FormData(formulaire);
-                // test de formdata
-                console.log(formData.get('user_name'));
+
+                
                 // il faut créer le contact 
                 let contact = {};
                 let products = []
@@ -55,7 +56,7 @@ let section =  document.getElementById('panier');
                 *
                 */
                     let requestBody = {contact, products};
-                    console.log(requestBody);
+                    //console.log(requestBody);
                     const myHeaders = new Headers();
       myHeaders.append('Content-Type', 'application/json');
 
@@ -66,13 +67,13 @@ let section =  document.getElementById('panier');
                 body: JSON.stringify(requestBody)
                 }).then(respons => respons.json()).then(result => console.log(result));
                
-                //verification(contact);
+                verification(contact);
 
                     
 
-                    //let sauvForm = JSON.stringify(contact);
-                    //localStorage.setItem('client', sauvForm);
-                //window.location = "./confirmation.html";
+                    let sauvForm = JSON.stringify(contact);
+                    localStorage.setItem('client', sauvForm);
+                
 })
 
 

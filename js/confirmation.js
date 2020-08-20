@@ -5,10 +5,27 @@ div.textContent = "Total de votre commande : " + prix +"€";
 
 
 
-    let contact = localStorage.getItem('client');
-    let contactTry = JSON.parse(contact);
+    
 
-    document.getElementById('merci').innerHTML = 'Merci pour votre commande : ' + contactTry.nom + ' ' + contactTry.prenom + '</br>' + 'Votre commande vous sera envoyé au : ' + contactTry.adresse + ' ' + contactTry.ville;
+
+    
+    fetch("http://localhost:3000/api/teddies/", {
+        method: 'GET',
+    
+    }).then(response =>{
+        return response.json();
+    }).then(response =>{
+        response.forEach(element => {
+            document.getElementById('merci');
+            let remerciment = document.createElement("p");
+        remerciment.textContent = element.lastName;
+
+        section.appendChild(remerciment);
+        });
+        
+
+        
+    })
 
 
 section.appendChild(div);
