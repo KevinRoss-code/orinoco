@@ -59,12 +59,20 @@ let section =  document.getElementById('panier');
                 body: JSON.stringify(requestBody)
                 }).then(respons => respons.json()).then(result => console.log(result));
                
+
+                
+
+                localStorage.setItem('contact', JSON.stringify(requestBody));
+                //Object.getOwnPropertyNames(contactJson).forEach (key =>{
+                   // let name = contactJson[key].firstName;
+                    //console.log(name);
+                //})
+                //let contactJson = JSON.parse(JSON.stringify(requestBody));
+                //console.log(contactJson);
                 
 
                     
 
-                    //let sauvForm = JSON.stringify(contact);
-                    //localStorage.setItem('client', sauvForm);
                 
 })
 
@@ -75,7 +83,7 @@ let section =  document.getElementById('panier');
      let adresse = document.getElementById('adress');
      let ville = document.getElementById('city');
      let email = document.getElementById('mail');
-
+     
      let regexTexte = /^[a-zA-Z-\s]+$/;
      
      let regexEmail =/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
@@ -136,8 +144,7 @@ let section =  document.getElementById('panier');
        
     } else {
         //trouver un moyen que ça se déclanche que si tout est bon
-        window.location = "./confirmation.html";
-
+        return window.location = "./confirmation.html";      
     }
  }
 
