@@ -37,6 +37,7 @@ class Panier {
         let ajoutCellule = ajoutLigne2.insertCell(0);
         ajoutCellule.textContent = 'Total';
         let ajoutCellPrice = ajoutLigne2.insertCell(1);
+        ajoutCellPrice.id = "totalPrice";
         ajoutCellPrice.innerHTML = this.additionPrix();
     }
 
@@ -60,6 +61,8 @@ class Panier {
         //faire en deux temps avec variable
         let produit = document.getElementById('produit_'+ id)
         produit.parentNode.removeChild(document.getElementById('produit_'+ id));
+        document.getElementById('totalPrice').textContent = this.additionPrix();
+
 
 
                 /*let choice = localStorage.getItem('panier');

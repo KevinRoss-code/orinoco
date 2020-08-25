@@ -22,7 +22,7 @@ let section =  document.getElementById('panier');
            
            let form = document.getElementById("formulaire").addEventListener("submit", function(e) {
                
-            validation();
+            
                 e.preventDefault();
                 
                 
@@ -42,11 +42,8 @@ let section =  document.getElementById('panier');
                     products.push(elt._id)
                 })
 
-
-
-                // il faut penser à envoyer aussi la liste des id des produits dans le panier (cf backend)
-                
-                
+                if(validation()){
+                    
                     let requestBody = {contact, products};
                     //console.log(requestBody);
                     const myHeaders = new Headers();
@@ -57,12 +54,22 @@ let section =  document.getElementById('panier');
                 headers: myHeaders,
 
                 body: JSON.stringify(requestBody)
-                }).then(respons => respons.json()).then(result => console.log(result));
+                }).then(respons => respons.json()).then(result =>{
+                    console.log(result);
+                    localStorage.setItem('commande', JSON.stringify(result));
+                    window.location = "./confirmation.html"; 
+                } );
+                }
+
+
+                // il faut penser à envoyer aussi la liste des id des produits dans le panier (cf backend)
+                
+                
                
 
                 
 
-                localStorage.setItem('contact', JSON.stringify(requestBody));
+                
                 //Object.getOwnPropertyNames(contactJson).forEach (key =>{
                    // let name = contactJson[key].firstName;
                     //console.log(name);
@@ -77,6 +84,7 @@ let section =  document.getElementById('panier');
 })
 
  function validation(){
+     let itsOk = true;
      // Récupérer la valeur des champs
      let nom = document.getElementById('name');
      let prenom = document.getElementById('surname');
@@ -92,11 +100,14 @@ let section =  document.getElementById('panier');
          let myErreur = document.getElementById("erreur");
          myErreur.innerHTML = 'le champs est vide';
          myErreur.style.color = 'red';
+         itsOk = false;
          
-     } else if (regexTexte.test(nom.value) == false) {
+     } 
+      if (regexTexte.test(nom.value) == false) {
         let myErreur = document.getElementById("erreur");
         myErreur.innerHTML = 'Synthaxe non valide';
         myErreur.style.color = 'red';
+        itsOk = false;
         
      }
 
@@ -104,19 +115,24 @@ let section =  document.getElementById('panier');
         let myErreur = document.getElementById("erreur2");
         myErreur.innerHTML = 'le champs est vide';
         myErreur.style.color = 'red';
+        itsOk = false;
         
-    } else if (regexTexte.test(prenom.value) == false) {
+    } 
+     if (regexTexte.test(prenom.value) == false) {
        let myErreur = document.getElementById("erreur2");
        myErreur.innerHTML = 'Synthaxe non valide';
        myErreur.style.color = 'red';
+       itsOk = false;
        }
 
        if (adresse.value == ""){
         let myErreur = document.getElementById("erreur3");
         myErreur.innerHTML = 'le champs est vide';
         myErreur.style.color = 'red';
+        itsOk = false;
         
-    } else if (adresse == true) {
+    } 
+    if (adresse == true) {
        console.log(adresse)
     }
 
@@ -124,11 +140,13 @@ let section =  document.getElementById('panier');
         let myErreur = document.getElementById("erreur4");
         myErreur.innerHTML = 'le champs est vide';
         myErreur.style.color = 'red';
+        itsOk = false;
         
-    } else if (regexTexte.test(ville.value) == false) {
+    } if (regexTexte.test(ville.value) == false) {
        let myErreur = document.getElementById("erreur4");
        myErreur.innerHTML = 'Synthaxe non valide';
        myErreur.style.color = 'red';
+       itsOk = false;
        
     }
 
@@ -136,16 +154,15 @@ let section =  document.getElementById('panier');
         let myErreur = document.getElementById("erreur5");
         myErreur.innerHTML = 'le champs est vide';
         myErreur.style.color = 'red';
+        itsOk = false;
         
-    } else if (regexEmail.test(email.value) == false) {
+    } if (regexEmail.test(email.value) == false) {
        let myErreur = document.getElementById("erreur5");
        myErreur.innerHTML = 'Synthaxe non valide';
        myErreur.style.color = 'red';
+       itsOk = false;
        
-    } else {
-        //trouver un moyen que ça se déclanche que si tout est bon
-        return window.location = "./confirmation.html";      
-    }
+    } return itsOk;
  }
 
 
