@@ -26,13 +26,14 @@ let section =  document.getElementById('panier');
                 e.preventDefault();
                 
                 
-                
+                //Mise en place de formData
                 let formData = new FormData(formulaire);
 
                 
                 // il faut créer le contact 
                 let contact = {};
                 let products = []
+                //Créer le champs pour les récuperer plus tard 
                 contact.firstName = formData.get('user_surname');
                 contact.lastName = formData.get('user_name');
                 contact.address = formData.get('user_adress');
@@ -44,6 +45,7 @@ let section =  document.getElementById('panier');
 
                 if(validation()){
                     
+                    //envoi des données des champs pour formData
                     let requestBody = {contact, products};
                     //console.log(requestBody);
                     const myHeaders = new Headers();
@@ -61,25 +63,6 @@ let section =  document.getElementById('panier');
                 } );
                 }
 
-
-                // il faut penser à envoyer aussi la liste des id des produits dans le panier (cf backend)
-                
-                
-               
-
-                
-
-                
-                //Object.getOwnPropertyNames(contactJson).forEach (key =>{
-                   // let name = contactJson[key].firstName;
-                    //console.log(name);
-                //})
-                //let contactJson = JSON.parse(JSON.stringify(requestBody));
-                //console.log(contactJson);
-                
-
-                    
-
                 
 })
 
@@ -92,10 +75,12 @@ let section =  document.getElementById('panier');
      let ville = document.getElementById('city');
      let email = document.getElementById('mail');
      
+     //regex pour savoir quel caractère nous voulons dans les champs 
      let regexTexte = /^[a-zA-Z-\s]+$/;
      
      let regexEmail =/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
 
+     //Permet de bloquer l'envoi si les champs ne sont pas remplis correctement
      if (nom.value == ""){
          let myErreur = document.getElementById("erreur");
          myErreur.innerHTML = 'le champs est vide';

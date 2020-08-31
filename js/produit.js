@@ -1,13 +1,14 @@
 
-
+//permet de prendre l'url 
 const url = window.location.search;
 const params = new URLSearchParams(url);
+
 let panier = new Panier();
 let selectedColor = "";
 
 
 
-
+//application de la recherche de l'url avec l'id compris dedans 
 fetch("http://localhost:3000/api/teddies/" + params.get('id')).then(response =>{
     return response.json();
 }).then(elements =>{
@@ -28,6 +29,7 @@ fetch("http://localhost:3000/api/teddies/" + params.get('id')).then(response =>{
     descr.textContent = elements.description;
     let select = document.getElementById("selectNumber");
     let options = elements.colors;
+    //mise en place du choix multiple
     for (let i = 0; i < options.length; i++){
         let opt = options[i];
         let el = document.createElement('option');
@@ -44,6 +46,7 @@ fetch("http://localhost:3000/api/teddies/" + params.get('id')).then(response =>{
     bouton.setAttribute('class', "page panier");
     bouton.setAttribute('type', 'button');
     bouton.textContent = "ajout";
+    //ajout au panier à l'aide d'un bouton
     bouton.addEventListener('click', () =>{
         elements.selectedColor = selectedColor;
         panier.ajoutPanier(elements);
