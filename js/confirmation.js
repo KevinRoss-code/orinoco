@@ -34,5 +34,7 @@ section.appendChild(numeroCommande);
 
 
 section.appendChild(totalPrix);
-
+function getDataFormLocal(data){
+    return (localStorage(data) ? JSON.parse(localStorage.get(data) : undefined)
+}
 
