@@ -4,7 +4,7 @@ retrieveContent('http://localhost:3000/api/teddies').then(elements => {
     elements.forEach(element => {
         affichage(element, "x")
     });
-}).catch(error =>{document.getElementById('x').innerHTML = '<h1>Erreur</h1>'});
+}).catch(error => { document.getElementById('x').innerHTML = '<h1>Erreur</h1>' });
 
 function affichage(element, container) {
     let articlesElt = document.getElementById(container);
@@ -25,4 +25,3 @@ function affichage(element, container) {
     article.appendChild(idElt);
 }
 
- 
